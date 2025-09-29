@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Add New Skin</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            width: 30%;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type=text], input[type=number] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Add a New Skin</h2>
+    <form  th:action="@{/add}" method="post" th:object="${skin}">
+        <label for="name">Skin Name:</label>
+        <input th:field="*{name}" id="name" name="name" type="text" placeholder="Enter the skin's name" required/>
+
+        <label for="price">Price ($):</label>
+        <input th:field="*{price}" id="price" name="price" type="number" step="any" min="0" placeholder="Enter price in USD" required/>
+
+        <label for="hero-name">Hero Name:</label>
+        <input th:field="*{heroName}" id="hero-name" name="heroName" type="text" placeholder="Enter hero's name" required/>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
